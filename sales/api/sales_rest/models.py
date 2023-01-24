@@ -21,9 +21,12 @@ class PotentialCustomer(models.Model):
         return self.name
 
 class AutomobileVO(models.Model):
-        color = models.CharField(max_length=50)
-        year = models.PositiveSmallIntegerField()
-        vin = models.CharField(max_length=17, unique=True)
+    import_href = models.CharField(max_length=200, unique=True)
+    vin = models.CharField(max_length=17, unique=True)
+    sold = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.import_href} {self.id}"
 
 
 class Sales(models.Model):

@@ -42,16 +42,16 @@ function AutomobileForm({getAutomobiles}) {
         };
 
 
-        const modelResponse = await fetch(automobileUrl, fetchOptions);
-          if (modelResponse.ok) {
+        const autoResponse = await fetch(automobileUrl, fetchOptions);
+          if (autoResponse.ok) {
             setModel('');
             setYear('');
             setColor('');
             setVin('');
             getAutomobiles('');
-
          }
       }
+
     const handleModelChange = (event) => {
         const value = event.target.value;
         setModel(value);
