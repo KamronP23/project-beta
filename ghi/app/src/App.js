@@ -3,6 +3,7 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import ManufacturersList from './ManufacturersList';
 import ManufacturersForm from './ManufacturersForm';
+import AutomobilesList from '.AutomobilesList'
 import React from 'react';
 import { useState, useEffect } from "react";
 
@@ -31,6 +32,7 @@ function App(props) {
           <Route path="/" element={<MainPage />} />
           <Route path="manufacturers/" element={<ManufacturersList manufacturers={manufacturers} getManufacturers={getManufacturers} />} />
           <Route path="manufacturers/new" element={<ManufacturersForm getManufacturers={getManufacturers}/>} />
+          <Route path="automobiles/" element={<AutomobilesList automobiles={automobiles} getModels={getModels} />} />
         </Routes>
       </div>
     </BrowserRouter>
