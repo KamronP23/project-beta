@@ -22,7 +22,7 @@ function App(props) {
 
     if (response.ok) {
       const data = await response.json();
-      const automobiles = data.automobiles;
+      const automobiles = data.autos;
       setAutomobiles(automobiles)
     }
   }
