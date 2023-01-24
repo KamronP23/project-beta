@@ -3,7 +3,7 @@ import React, {useEffect, useState } from 'react';
 
 function ModelForm({getModels}) {
 
-    const [manufacturers, setmanufacturers] = useState([]);
+    const [manufacturers, setManufacturers] = useState([]);
     const [modelName, setModelName] = useState('')
     const [pictureUrl, setPictureUrl] = useState('')
     const [manufacturer, setManufacturer] = useState('')
@@ -13,7 +13,7 @@ function ModelForm({getModels}) {
         const response = await fetch(url);
         if (response.ok) {
         const data = await response.json();
-        setmanufacturers(data.manufacturers);
+        setManufacturers(data.manufacturers);
         }
     }
 
@@ -27,7 +27,6 @@ function ModelForm({getModels}) {
         data.name = modelName;
         data.picture_url = pictureUrl;
         data.manufacturer_id = manufacturer;
-        console.log(data)
 
 
         const modelUrl = '//localhost:8100/api/models/'
