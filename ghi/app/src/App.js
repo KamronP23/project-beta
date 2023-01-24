@@ -3,7 +3,7 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import ManufacturersList from './ManufacturersList';
 import ManufacturersForm from './ManufacturersForm';
-import AutomobilesList from '.AutomobilesList'
+import AutomobilesList from './AutomobilesList'
 import React from 'react';
 import ModelList from './ModelList';
 import { useState, useEffect } from "react";
@@ -24,20 +24,33 @@ function App(props) {
     }
   }
 
-const [models, setModels] = useState([])
+  const [automobiles, setAutomobiles] = useState([])
+  const getAutomobiles = async () => {
+      const url = '//localhost:8100/api/automobiles/'
+      const response = await fetch(url);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data)
+        const automobiles = data.autos;
+        setAutomobiles(automobiles)
+      }
+    } 
 
-  const getModels = async () => {
-    const response = await fetch('http://localhost:8100/api/models/');
-    if (response.ok) {
-      const data = await response.json();
-      const models = data.models
-      setModels(models)
-    }}
+  const [models, setModels] = useState([])
 
-useEffect (() => {
-  getModels();
-  getManufacturers();
-}, [])
+    const getModels = async () => {
+      const response = await fetch('http://localhost:8100/api/models/');
+      if (response.ok) {
+        const data = await response.json();
+        const models = data.models
+        setModels(models)
+      }}
+
+  useEffect (() => {
+    getModels();
+    getManufacturers();
+    getAutomobiles();
+  }, [])
 
   return (
     <BrowserRouter>
@@ -47,7 +60,7 @@ useEffect (() => {
           <Route path="/" element={<MainPage />} />
           <Route path="manufacturers/" element={<ManufacturersList manufacturers={manufacturers} getManufacturers={getManufacturers} />} />
           <Route path="manufacturers/new" element={<ManufacturersForm getManufacturers={getManufacturers}/>} />
-          <Route path="automobiles/" element={<AutomobilesList automobiles={automobiles} getModels={getModels} />} />
+          <Route path="automobiles/" element={<AutomobilesList automobiles={automobiles} getAutomobiles={getAutomobiles} />} />
           <Route path="models/" element={<ModelList models={models} getModels={getModels}/>} />
           <Route path="models/">
           <Route path="new" element={<CreateModelForm getModels={getModels}/>} />

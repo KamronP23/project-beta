@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-function AutomobilesList({ automobiles, getAubomobiles }){
+function AutomobilesList({ automobiles, getAutomobiles }){
   const deleteAutomobile = async (id) => {
-    const response = await fetch(`http://localhost:8080/api/shoes/${id}/`, {
+    const response = await fetch(`http://localhost:8100/api/automobiles/${id}/`, {
       method: "delete",
     })
   if (response.ok) {
-    return getShoes()
+    return getAutomobiles()
   }
   }
-  if (shoes === undefined) {
+  if (automobiles === undefined) {
      return null
   }
 
@@ -21,22 +21,24 @@ function AutomobilesList({ automobiles, getAubomobiles }){
             <th>Model</th>
             <th>Manufacturer</th>
             <th>Color</th>
+            <th>Year</th>
+            <th>VIN</th>
             <th>Picture</th>
-            <th>Bin</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          {shoes.map((shoes) => {
+          {automobiles.map(automobile => {
             return (
-              <tr key={shoes.id}>
-                <td>{ shoes.model_name }</td>
-                <td>{ shoes.manufacturer }</td>
-                <td>{ shoes.color }</td>
-                <td><img src={shoes.pic_url} className="img-thumbnail" width="150" height="150"></img></td>
-                <td>{shoes.bin}</td>
+              <tr key={automobile.vin}>
+                <td>{ automobile.model.name }</td>
+                <td>{ automobile.model.manufacturer.name }</td>
+                <td>{ automobile.color }</td>
+                <td>{ automobile.year }</td>
+                <td>{ automobile.vin }</td>
+                <td><img src={automobile.model.picture_url} className="img-thumbnail" width="150" height="150"></img></td>
                 <td>
-                  <button type="button" value={shoes.id} onClick={() => deleteShoe(shoes.id)}>Delete</button> 
+                  <button type="button" value={automobile.vin} onClick={() => deleteAutomobile(automobile.vin)}>Delete</button> 
                 </td>
               </tr>
             );
@@ -47,4 +49,4 @@ function AutomobilesList({ automobiles, getAubomobiles }){
     );
 }
 
-export default ShoesList;
+export default AutomobilesList;
