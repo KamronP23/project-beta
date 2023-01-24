@@ -38,33 +38,6 @@ function App(props) {
     }
   }
 
-  const [automobiles, setAutomobiles] = useState([])
-  const getAutomobiles = async () => {
-      const url = '//localhost:8100/api/automobiles/'
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data)
-        const automobiles = data.autos;
-        setAutomobiles(automobiles)
-      }
-    } 
-
-  const [models, setModels] = useState([])
-
-    const getModels = async () => {
-      const response = await fetch('http://localhost:8100/api/models/');
-      if (response.ok) {
-        const data = await response.json();
-        const models = data.models
-        setModels(models)
-      }}
-
-  useEffect (() => {
-    getModels();
-    getManufacturers();
-    getAutomobiles();
-  }, [])
   const getModels = async () => {
     const response = await fetch('http://localhost:8100/api/models/');
     if (response.ok) {
@@ -78,6 +51,7 @@ useEffect (() => {
   getManufacturers();
   getAutomobiles();
 }, [])
+  
 
   return (
     <BrowserRouter>
