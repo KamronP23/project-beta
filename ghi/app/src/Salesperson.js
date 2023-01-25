@@ -45,39 +45,37 @@ function Salesperson ({salesperson, getSalesperson}){
             <div className="mb-3">
                 <select className="form-select" onChange={handleSalespersonChange} value={name} name="name" required id="name">
                 <option value="">Select salesperson</option>
-                {salespersons.map(salesperson => {
+                {salespersons.map(saleperson => {
                     return (
-                        <option key={salesperson.id} value={salesperson.name}>
-                            {salesperson.name}
+                        <option key={saleperson.id} value={saleperson.name}>
+                            {saleperson.name}
                         </option>
                     );
                     })}
                 </select>
             </div>
-        <table className="table table-striped">
-        <thead>
-          <tr>
+<table className="table table-striped">
+    <thead>
+        <tr>
             <th>Salesperson</th>
             <th>Customer</th>
             <th>VIN</th>
             <th>Price</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          {sales.map(sale => {
+        </tr>
+    </thead>
+    <tbody>
+        {sales.filter(sale => sale.salesperson.name === name).map(sale => {
             return (
-              <tr key={sale.id}>
-                <td>{ sale.salesperson.name}</td>
-                <td>{ sale.customer.name }</td>
-                <td>{ sale.automobile.vin }</td>
-                <td>${ sale.sale_price.toLocaleString() }</td>
-
-              </tr>
+                <tr key={sale.id}>
+                    <td>{ sale.salesperson.name}</td>
+                    <td>{ sale.customer.name }</td>
+                    <td>{ sale.automobile.vin }</td>
+                    <td>${ sale.sale_price.toLocaleString() }</td>
+                </tr>
             );
-          })}
-        </tbody>
-      </table>
+        })}
+    </tbody>
+</table>
       </div>
     );
 }

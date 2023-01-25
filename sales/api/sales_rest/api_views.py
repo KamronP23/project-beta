@@ -158,6 +158,17 @@ def api_list_sales(request):
             )
 
 
+require_http_methods(["GET"])
+def api_sales_details(request, pk):
+    if request.method == "GET":
+        sales = Sales.objects.filter(id=pk)
+        return JsonResponse(
+            sales,
+            encoder=SalesListEncoder,
+            safe=False
+        )
+
+
 
 require_http_methods(["GET"])
 def api_list_automobilesvo(request):
