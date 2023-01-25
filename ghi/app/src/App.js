@@ -10,13 +10,18 @@ import { useState, useEffect } from "react";
 import CreateModelForm from './CreateModelForm'
 import AutomobileForm from './AutomobileForm'
 import SalespersonForm from './SalespersonForm';
+import CustomerForm from './CustomerForm';
+import SalesForm from './SalesForm';
+import SalesList from './SalesList';
 
 
 function App(props) {
-  const [manufacturers, setManufacturers] = useState([])
-  const [models, setModels] = useState([])
-  const [automobiles, setAutomobiles] = useState([])
-  const [salespersons, setSalespersons] = useState([])
+  const [manufacturers, setManufacturers] = useState([]);
+  const [models, setModels] = useState([]);
+  const [automobiles, setAutomobiles] = useState([]);
+  const [salespersons, setSalespersons] = useState([]);
+  const [customer, setCustomer] = useState([]);
+  const [sales, setSales] = useState([]);
 
   const getAutomobiles = async () => {
     const url = 'http://localhost:8100/api/automobiles/'
@@ -48,19 +53,40 @@ function App(props) {
       setModels(models)
     }}
 
-    const getSalesperson = async () => {
-      const response = await fetch ('http://localhost:8090/api/salespersons/');
-      if (response.ok) {
-        const data = await response.json();
-        const salespersons = data.salespersons
-        setSalespersons(salespersons)
-      }
+  const getSalesperson = async () => {
+    const response = await fetch ('http://localhost:8090/api/salespersons/');
+    if (response.ok) {
+      const data = await response.json();
+      const salespersons = data.salespersons
+      setSalespersons(salespersons)
     }
+  }
+
+  const getCustomer = async () => {
+    const response = await fetch ('http://localhost:8090/api/customer/');
+    if (response.ok) {
+      const data = await response.json();
+      const customer = data.customer
+      setCustomer(customer)
+    }
+  }
+
+  const getSales = async () => {
+    const response = await fetch ('http://localhost:8090/api/sales/');
+    if (response.ok) {
+      const data = await response.json();
+      const sales = data.sales
+      setSales(sales)
+    }
+  }
 
 useEffect (() => {
   getModels();
   getManufacturers();
   getAutomobiles();
+  getSalesperson();
+  getCustomer();
+  getSales();
 }, [])
 
 
@@ -81,6 +107,12 @@ useEffect (() => {
           <Route path="new" element={<CreateModelForm getModels={getModels}/>} />
           </Route>
           <Route path="salespersons/" element={<SalespersonForm salespersons={salespersons} getSalesperson={getSalesperson} />} />
+          <Route path="customer/" element={<CustomerForm customer={customer} getCustomer={getCustomer} />} />
+          <Route path="sales/" element={<SalesList sales={sales} getSales={getSales} />} />
+          <Route path="sales/">
+          <Route path="new" element={<SalesForm getSales={getSales}/>} />
+          </Route>
+
         </Routes>
       </div>
     </BrowserRouter>

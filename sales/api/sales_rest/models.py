@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Salesperson(models.Model):
@@ -6,7 +7,7 @@ class Salesperson(models.Model):
     employee_number = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
 
 class PotentialCustomer(models.Model):
@@ -18,7 +19,7 @@ class PotentialCustomer(models.Model):
     phone = models.CharField(max_length=12)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
 class AutomobileVO(models.Model):
     import_href = models.CharField(max_length=200, unique=True)
@@ -26,7 +27,7 @@ class AutomobileVO(models.Model):
     sold = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.import_href} {self.id}"
+        return f"{self.import_href}"
 
 
 class Sales(models.Model):
@@ -49,3 +50,9 @@ class Sales(models.Model):
         related_name = "sales",
         on_delete=models.CASCADE
     )
+
+    def get_api_url(self):
+        return reverse("api_show_sales", kwargs={"pk": self.pk})
+
+    def __str__(self):
+        return f"{self.salesperson} {self.customer} {self.automobile}"

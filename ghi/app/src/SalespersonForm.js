@@ -10,7 +10,6 @@ function SalespersonForm({getSalesperson}) {
         const data = {};
         data.name = name;
         data.employee_number = employeeNumber;
-        console.log(data)
 
 
         const hatUrl = 'http://localhost:8090/api/salespersons/';
@@ -49,7 +48,7 @@ function SalespersonForm({getSalesperson}) {
             <div className="card shadow">
               <div className="card-body">
                 <form onSubmit={handleSubmit} id="create-hat-form">
-                  <h1 className="card-title">Add a hat</h1>
+                  <h1 className="card-title">Sign up</h1>
                     <div className="col">
                       <div className="form-floating mb-3">
                         <input onChange={handleNameChange} required placeholder="Name" type="text" id="name" name="name" className="form-control" value={name}/>

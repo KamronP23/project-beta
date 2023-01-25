@@ -1,8 +1,10 @@
 from django.urls import path
-from .api_views import api_list_salesperson, api_list_customer, api_list_automobilesvo
+from .api_views import api_list_salesperson, api_list_customer, api_list_automobilesvo, api_list_sales
 
 urlpatterns = [
     path("salespersons/", api_list_salesperson, name='api_create_salespersons'),
     path("customer/", api_list_customer, name="api_create_customer"),
     path("automobiles/", api_list_automobilesvo, name="automobile_list"),
+    path("sales/", api_list_sales, name='api_create_sales'),
+
 ]

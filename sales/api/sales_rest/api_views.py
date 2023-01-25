@@ -20,7 +20,9 @@ class AutomobileVOListEncoder(ModelEncoder):
     properties = [
         "vin",
         "import_href",
-        "sold"
+        "sold",
+        "id"
+
 
     ]
 
@@ -33,6 +35,7 @@ class PotentialCustomerListEncoder(ModelEncoder):
         "zip_code",
         "state",
         "phone",
+        "id"
     ]
 
 class SalesListEncoder(ModelEncoder):
@@ -41,12 +44,13 @@ class SalesListEncoder(ModelEncoder):
         "sale_price",
         "automobile",
         "customer",
-        "salesperson"
+        "salesperson",
+        "id"
     ]
     encoders = {
         "salesperson": SalesPersonListEncoder(),
         "customer": PotentialCustomerListEncoder(),
-        "automobile": AutomobileVOListEncoder
+        "automobile": AutomobileVOListEncoder(),
     }
 
 
@@ -98,6 +102,39 @@ def api_list_customer(request):
             )
             response.status_code = 400
             return response
+
+require_http_methods(["GET", "POST"])
+def api_list_sales(request):
+    if request.method == "GET":
+        sales = Sales.objects.all()
+        return JsonResponse(
+            {"sales": sales},
+            encoder=SalesListEncoder
+        )
+    else:
+        content = json.loads(request.body)
+        try:
+            autos = AutomobileVO.objects.get(import_href=content["automobile"])
+            content["automobile"] = autos
+
+            customer = PotentialCustomer.objects.get(name=content["customer"])
+            content["customer"] = customer
+
+            salesperson = Salesperson.objects.get(name=content["salesperson"])
+            content["salesperson"] = salesperson
+
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse(
+                {"message": "invalid Auto ID"},
+                status=400,
+            )
+        sales = Sales.objects.create(**content)
+        return JsonResponse(
+            sales,
+            encoder=SalesListEncoder,
+            safe=False
+        )
+
 
 require_http_methods(["GET"])
 def api_list_automobilesvo(request):
