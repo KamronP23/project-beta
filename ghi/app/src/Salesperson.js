@@ -41,6 +41,7 @@ function Salesperson ({salesperson, getSalesperson}){
     return (
 
         <div>
+            <div><br></br></div>
             <div className="mb-3">
                 <select className="form-select" onChange={handleSalespersonChange} value={name} name="name" required id="name">
                 <option value="">Select salesperson</option>
@@ -70,7 +71,7 @@ function Salesperson ({salesperson, getSalesperson}){
                 <td>{ sale.salesperson.name}</td>
                 <td>{ sale.customer.name }</td>
                 <td>{ sale.automobile.vin }</td>
-                <td>{ sale.sale_price }</td>
+                <td>${ sale.sale_price.toLocaleString() }</td>
 
               </tr>
             );

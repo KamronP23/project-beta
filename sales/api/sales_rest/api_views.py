@@ -125,26 +125,38 @@ def api_list_sales(request):
     else:
         content = json.loads(request.body)
         try:
+
             autos = AutomobileVO.objects.get(import_href=content["automobile"])
-            content["automobile"] = autos
+            if autos.sold == False: #added this
+                autos.sold = True #added this
+                autos.save() #added this
+                content["automobile"] = autos #indented
 
-            customer = PotentialCustomer.objects.get(name=content["customer"])
-            content["customer"] = customer
+                customer = PotentialCustomer.objects.get(name=content["customer"])
+                content["customer"] = customer
 
-            salesperson = Salesperson.objects.get(name=content["salesperson"])
-            content["salesperson"] = salesperson
+                salesperson = Salesperson.objects.get(name=content["salesperson"])
+                content["salesperson"] = salesperson
+                sales = Sales.objects.create(**content)
+                return JsonResponse(
+                    sales,
+                    encoder=SalesListEncoder,
+                    safe=False
+                )
+            else:
+                response = JsonResponse(
+                    {"message": "Car is already sold"}
+                    )
+            response.status_code = 400
+            return response
 
-        except AutomobileVO.DoesNotExist:
+
+        except:
             return JsonResponse(
-                {"message": "invalid Auto ID"},
+                {"message": "Could not process sale"},
                 status=400,
             )
-        sales = Sales.objects.create(**content)
-        return JsonResponse(
-            sales,
-            encoder=SalesListEncoder,
-            safe=False
-        )
+
 
 
 require_http_methods(["GET"])

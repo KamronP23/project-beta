@@ -110,7 +110,7 @@ function SalesForm({getSales}) {
                   <div className="form-floating mb-3">
                     <select onChange={handleAutomobileChange} name="automobile" id="automobile" className="form-select" required value={automobile}>
                       <option value="">Automobile</option>
-                      {automobiles.map(auto => {
+                      {automobiles.filter((auto) => !auto.sold).map(auto => {
                         return (
                           <option key={auto.import_href} value={auto.import_href}>{auto.vin}</option>
                         )

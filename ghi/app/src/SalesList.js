@@ -25,7 +25,7 @@ function SalesList ({sales, getSales}){
                 <td>{ sale.automobile.vin }</td>
                 <td>{ sale.salesperson.name }</td>
                 <td>{ sale.customer.name }</td>
-                <td>{ sale.sale_price }</td>
+                <td>${ sale.sale_price.toLocaleString() }</td>
 
               </tr>
             );
