@@ -13,6 +13,7 @@ import SalespersonForm from './SalespersonForm';
 import CustomerForm from './CustomerForm';
 import SalesForm from './SalesForm';
 import SalesList from './SalesList';
+import Salesperson from './Salesperson';
 
 
 function App(props) {
@@ -107,6 +108,9 @@ useEffect (() => {
           <Route path="new" element={<CreateModelForm getModels={getModels}/>} />
           </Route>
           <Route path="salespersons/" element={<SalespersonForm salespersons={salespersons} getSalesperson={getSalesperson} />} />
+          <Route path="salespersons/">
+          <Route path="record" element={<Salesperson getSalesperson={getSalesperson}/>} />
+          </Route>
           <Route path="customer/" element={<CustomerForm customer={customer} getCustomer={getCustomer} />} />
           <Route path="sales/" element={<SalesList sales={sales} getSales={getSales} />} />
           <Route path="sales/">

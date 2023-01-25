@@ -79,6 +79,17 @@ def api_list_salesperson(request):
             return response
 
 
+require_http_methods(["GET"])
+def api_show_salesperson(request, pk):
+    if request.method == "GET":
+        salespersons = Salesperson.objects.get(id=pk)
+        return JsonResponse(
+            salespersons,
+            encoder=SalesPersonListEncoder,
+            safe=False
+        )
+
+
 require_http_methods(["GET", "POST"])
 def api_list_customer(request):
     if request.method == "GET":
