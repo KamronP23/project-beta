@@ -38,14 +38,77 @@ git clone <insert HTTPS>
 ```
 4. Access site via http://localhost:3000
 
-### How to Use:
-1. 
-## Service microservice
+## How to Use:
+### to create a vehicle:
+A manufacturer is required to create a model and a model is required to create an automobile.
+1. Begin by creating a manufacturer from the inventory dropdown
+2. Create a model from the inventory dropdown
+3. Create automobile from the inventory dropdown
 
-Explain your models and integration with the inventory
-microservice, here.
+### To sell vehicles:
+A customer, salesperson and a vehicle are required to create a sale.
+1. Begin by creating a customer from the sales dropdown
+2. Create a salesperson from the sales dropdown
+3. sell a vehicle from the sales drop down
+4. get a list of all vehicles sold from the Sales dropdown
+5. get salesperson recrods from the sales dropdown.
+
+### To schedule a service
+1. Begin by creating a technician from the service dropdown.
+2.
+3.
 
 ## Sales microservice
+### Models for the Sales microservice:
+* AutomobileVO
+* Salesperson
+* PotentialCustomer
+* Sales
+
+the sales model uses the AutmobileVO, Salesperson and PotentialCustomer models as foreign keys.
+
+### integration with inventory microservice:
+The Sales microservice will poll data from the automobiles inventory to an AutomobileVO model (value object). The AutomobileVO model has an added sold BoolianField that is set the False. When a vehicle is sold in the Sales form, the sold value will change to True. It will then be used to filter out sold cars from the saleform VIN dropdown. The Salesperson record and list of all Sales page will update when a car is sold to provide that data.
+
+## Sales insomnia URL, Port, JSON requirements
+### Salesperson:
+* Create/POST Salesperson - http://localhost:8090/api/salespersons/
+* JSON:
+```
+{
+  "name": "Kamron",
+  "employee_number": "12345"
+}
+```
+* List/GET Salesperson - http://localhost:8090/api/salespersons/
+
+### Customer
+* Create/POST Customer - http://localhost:8090/api/customer/
+* JSON:
+```
+	{
+			"name": "Some Name",
+			"street": "Street address",
+			"city": "A city",
+			"zip_code": "Zip Code",
+			"state": "State",
+			"phone": "##########"
+	}
+```
+### Sale
+* Create/POST Sale - http://localhost:8090/api/sales/
+* JSON:
+```
+{
+  "sale_price": "18000", #price
+  "automobile": "/api/automobiles/233CC5DB11/", #automobile href
+	"customer": "A Name",
+	"salesperson": "A Name"
+}
+```
+* List/GET Sales - http://localhost:8090/api/sales/
+
+## Service microservice
 
 Explain your models and integration with the inventory
 microservice, here.
