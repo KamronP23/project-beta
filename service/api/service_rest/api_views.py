@@ -91,12 +91,23 @@ def api_show_service(request, pk):
 @require_http_methods(["GET"])
 def api_show_history(request, vin):
     if request.method == "GET":
-        service = Service.objects.get(id=vin)
-        return JsonResponse(
-            service,
-            encoder=ServiceDetailEncoder,
-            safe=False,
-        )
+        pass
+        # service = Service.objects.all()
+        # content = json.dumps(request.body)
+        # try:
+        #     vin = AutosVO.objects.get(vin=content["vin"])
+        #     content["vin"] = vin
+        # except AutosVO.DoesNotExist:
+        #     return JsonResponse(
+        #         {"message": "Invalid automobile vin"},
+        #         status=400,
+        #     )
+        # service = Service.objects.filter(vin)
+        # return JsonResponse(
+        #     service,
+        #     encoder=ServiceDetailEncoder,
+        #     safe=False,
+        # )
 
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):

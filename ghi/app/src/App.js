@@ -11,7 +11,8 @@ import CreateModelForm from './CreateModelForm'
 import AutomobileForm from './AutomobileForm'
 import ServicesForm from './ServicesForm'
 import ServicesList from './ServicesList'
-// import ServiceHistory from './ServiceHistory'
+import ServiceHistoryForm from './ServiceHistoryForm'
+import ServiceHistoryList from './ServiceHistoryList'
 import TechniciansForm from './TechnicianForm'
 
 
@@ -68,6 +69,14 @@ function App(props) {
       setTechnicians(technicians)
     }}
 
+  // const getServiceHistory = async () => {
+  //   const response = await fetch('http://localhost:8080/api/services/');
+  //   if (response.ok) {
+  //     const data = await response.json();
+  //     const services = data.services
+  //     setServices(services)
+  //   }}
+
 useEffect (() => {
   getModels();
   getManufacturers();
@@ -96,6 +105,7 @@ useEffect (() => {
           <Route path="services/" element={<ServicesList services={services} getServices={getServices}/>} />
           <Route path="services/">
           <Route path="new" element={<ServicesForm getServices={getServices}/>} />
+          <Route path="history" element={<ServiceHistoryList services={services} getServices={getServices}/>} />
           </Route>
           <Route path="technicians/">
           <Route path="new" element={<TechniciansForm getTechnicians={getTechnicians}/>} /> 

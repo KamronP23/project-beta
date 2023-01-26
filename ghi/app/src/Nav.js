@@ -14,7 +14,7 @@ function Nav() {
               <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
             </li>
             <div className="dropdown">
-              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="/automobiles" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 Autos
               </NavLink>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -27,13 +27,14 @@ function Nav() {
               </ul>
             </div>
             <div className="dropdown">
-              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="/services" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 Services
               </NavLink>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><NavLink className="dropdown-item" to="/services">Services</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/services">List all service appointments</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/services/new">Enter a service appointment</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/technicians/new">Technicians</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/technicians/new">Createa a technician employee</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/services/history">List service records by VIN</NavLink></li>
               </ul>
             </div>
           </ul>
