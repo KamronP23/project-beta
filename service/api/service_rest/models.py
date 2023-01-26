@@ -4,6 +4,7 @@ from django.urls import reverse
 class AutosVO(models.Model):
     import_href = models.CharField(max_length=200, unique=True)
     vin = models.CharField(max_length=17, unique=True)
+    vip = models.BooleanField(default=True)
 
 
 class Technician(models.Model):
@@ -18,6 +19,7 @@ class Service(models.Model):
     date_time = models.DateTimeField()
     reason = models.CharField(max_length=200)
     completed = models.BooleanField(null=False)
+    vip = models.BooleanField(default=False)
     technician = models.ForeignKey(
     Technician,
     related_name="services",

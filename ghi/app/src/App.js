@@ -11,7 +11,6 @@ import CreateModelForm from './CreateModelForm'
 import AutomobileForm from './AutomobileForm'
 import ServicesForm from './ServicesForm'
 import ServicesList from './ServicesList'
-import ServiceHistoryForm from './ServiceHistoryForm'
 import ServiceHistoryList from './ServiceHistoryList'
 import TechniciansForm from './TechnicianForm'
 
@@ -68,14 +67,6 @@ function App(props) {
       const technicians = data.technicians
       setTechnicians(technicians)
     }}
-
-  // const getServiceHistory = async () => {
-  //   const response = await fetch('http://localhost:8080/api/services/');
-  //   if (response.ok) {
-  //     const data = await response.json();
-  //     const services = data.services
-  //     setServices(services)
-  //   }}
 
 useEffect (() => {
   getModels();

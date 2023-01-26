@@ -31,6 +31,13 @@ function ServicesForm({getServices}) {
         setReason(value);
       }
 
+      const [vip, setVip] = useState('');
+
+      const handleVipChange = (event) => {
+        const value = event.target.value;
+        setReason(value);
+      }
+
       const [completed, setCompleted] = useState(false);
 
       const handleSubmit = async (event) => {
@@ -43,6 +50,7 @@ function ServicesForm({getServices}) {
         data.reason = reason;
         data.completed = completed;
         data.vin = vin;
+        data.vip = vip;
 
         console.log(data)
       
@@ -64,6 +72,8 @@ function ServicesForm({getServices}) {
           setDate_time('');
           setReason('');
           setCompleted(false);
+          setVin('');
+          setVip(false)
           getServices();        
         }
       }
@@ -73,6 +83,7 @@ function ServicesForm({getServices}) {
     const handleVinChange = (event) => {
     const value = event.target.value;
     setVin(value);
+    setVip(true);
     }
     
     const [vins, setVins] = useState([]);

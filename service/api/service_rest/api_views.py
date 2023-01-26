@@ -15,19 +15,8 @@ class TechnicianDetailEncoder(ModelEncoder):
 
 class AutosVODetailEncoder(ModelEncoder):
     model = AutosVO
-    properties = ["vin", "import_href", "id"]
+    properties = ["vin", "import_href", "id", "vip"]
     
-
-# class ServiceListEncoder(ModelEncoder):
-#     model = Service
-#     properties = ["customer_name", "date", "time", "reason", "completed", "id", "technician", "vin"]
-
-    # def get_extra_data(self, o):
-    #     return {"vin": o.vin}
-
-    # def get_extra_data(self, o):
-    #     return {"technician": o.technician}
-
 class ServiceDetailEncoder(ModelEncoder):
     model = Service
     properties = [
@@ -58,6 +47,7 @@ def api_list_services(request):
         try:
             vin = AutosVO.objects.get(vin=content["vin"])
             content["vin"] = vin
+            Service.objects.vip = True
 
             technician = Technician.objects.get(technician_name=content["technician"])
             content["technician"] = technician
@@ -75,7 +65,7 @@ def api_list_services(request):
             safe=False,
         )
 
-@require_http_methods(["DELETE", "GET"])
+@require_http_methods(["DELETE", "GET", "PUT"])
 def api_show_service(request, pk):
     if request.method == "GET":
         service = Service.objects.get(id=pk)
@@ -88,26 +78,15 @@ def api_show_service(request, pk):
         count, _ = Service.objects.filter(id=pk).delete()
         return JsonResponse({"deleted": count > 0})
 
-@require_http_methods(["GET"])
-def api_show_history(request, vin):
-    if request.method == "GET":
-        pass
-        # service = Service.objects.all()
-        # content = json.dumps(request.body)
-        # try:
-        #     vin = AutosVO.objects.get(vin=content["vin"])
-        #     content["vin"] = vin
-        # except AutosVO.DoesNotExist:
-        #     return JsonResponse(
-        #         {"message": "Invalid automobile vin"},
-        #         status=400,
-        #     )
-        # service = Service.objects.filter(vin)
-        # return JsonResponse(
-        #     service,
-        #     encoder=ServiceDetailEncoder,
-        #     safe=False,
-        # )
+    elif request.method == "PUT":
+        service = Service.objects.get(id=pk)
+        service.completed = True
+        service.save()
+        return JsonResponse(
+            service,
+            encoder=ServiceDetailEncoder,
+            safe=False,
+        )
 
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):

@@ -38,7 +38,6 @@ function ServiceHistoryList({ services, getServices }){
             <th>Date/Time</th> 
             <th>Technician</th>
             <th>Reason</th>
-            <th>Cancel</th>
             <th>Complete</th>
           </tr>
         </thead>
@@ -51,6 +50,7 @@ function ServiceHistoryList({ services, getServices }){
                 <td>{ service.date_time }</td>
                 <td>{ service.technician.technician_name }</td>
                 <td>{ service.reason }</td>
+                <td>{ String(service.completed) }</td>
               </tr>
             );
           })}
