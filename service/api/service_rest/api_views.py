@@ -5,29 +5,43 @@ import json
 from common.json import ModelEncoder
 from .models import Service, AutosVO, Technician 
 
+class TechnicianListEncoder(ModelEncoder):
+    model = Technician
+    properties = ["technician_name", "employee_number", "id"]
+
+class TechnicianDetailEncoder(ModelEncoder):
+    model = Technician
+    properties = ["technician_name", "employee_number", "id"]
+
 class AutosVODetailEncoder(ModelEncoder):
     model = AutosVO
-    properties = ["vin", "import_href"]
+    properties = ["vin", "import_href", "id"]
+    
 
-class ServiceListEncoder(ModelEncoder):
-    model = Service
-    properties = ["customer_name", "date", "time", "reason", "completed", "technician_name"]
+# class ServiceListEncoder(ModelEncoder):
+#     model = Service
+#     properties = ["customer_name", "date", "time", "reason", "completed", "id", "technician", "vin"]
 
-    def get_extra_data(self, o):
-        return {"vin": o.vin}
+    # def get_extra_data(self, o):
+    #     return {"vin": o.vin}
+
+    # def get_extra_data(self, o):
+    #     return {"technician": o.technician}
 
 class ServiceDetailEncoder(ModelEncoder):
     model = Service
     properties = [
         "customer_name",
-        "date",
-        "time",
+        "date_time",
         "reason",
         "completed",
-        "technician_name",
+        "technician",
+        "id",
+        "vin",
     ]
     encoders = {
         "vin": AutosVODetailEncoder(),
+        "technician": TechnicianListEncoder(),
     }
 
 @require_http_methods(["GET", "POST"])
@@ -36,15 +50,18 @@ def api_list_services(request):
         services = Service.objects.all()
         return JsonResponse(
             {"services": services},
-            encoder=ServiceListEncoder,
+            encoder=ServiceDetailEncoder,
         )
     else:
         content = json.loads(request.body)
   
         try:
-
-            vin = AutosVO.objects.get(id=content["vin"])
+            vin = AutosVO.objects.get(vin=content["vin"])
             content["vin"] = vin
+
+            technician = Technician.objects.get(technician_name=content["technician"])
+            content["technician"] = technician
+
         except AutosVO.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid automobile vin"},
@@ -80,15 +97,6 @@ def api_show_history(request, vin):
             encoder=ServiceDetailEncoder,
             safe=False,
         )
-
-class TechnicianListEncoder(ModelEncoder):
-    model = Technician
-    properties = ["technician_name", "emloyee_number", "id"]
-
-class TechnicianDetailEncoder(ModelEncoder):
-    model = Technician
-    properties = ["technician_name", "employee_number", "id"]
-
 
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
