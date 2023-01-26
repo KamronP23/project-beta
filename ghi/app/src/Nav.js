@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
@@ -13,44 +12,46 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers/new">Create new manufacturer</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/models">Model</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/models/new">Create Model</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/automobiles">Autos</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/automobiles/new">Create Auto</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/salespersons">Create Salesperson</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/salespersons/record">Salesperson record</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/customer">Create Customer</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/sales">Sale List</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/sales/new">Create Sale</NavLink>
-            </li>
+            <div className="dropdown">
+              <NavLink renderMenuOnMount={true} className="btn btn-secondary dropdown-toggle bg-success" to="/automobiles" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Autos
+              </NavLink>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><NavLink className="dropdown-item" to="/manufacturers">Manufacturers</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/manufacturers/new">Create a new manufacturer</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/models">Models</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/models/new">Create a new model</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/automobiles">Automobiles</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/automobiles/new">Create a new automobile</NavLink></li>
+              </ul>
+            </div>
+            <div className="dropdown">
+              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="/services" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </NavLink>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><NavLink className="dropdown-item" to="/services">Services</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/services/new">Enter a service appointment</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/technicians/new">Technicians</NavLink></li>
+              </ul>
+            </div>
+            <div className="dropdown">
+              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="/sales" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Sales
+              </NavLink>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><NavLink className="dropdown-item" to="/customer">New customer</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/salespersons">New Salesperson</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/salespersons/record">Salesperson records</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/sales">Cars Sold!</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/sales/new">Sell form</NavLink></li>
+
+              </ul>
+            </div>
           </ul>
         </div>
       </div>
     </nav>
   )
 }
-
 export default Nav;
