@@ -7,7 +7,8 @@ Team:
 
 ## Design
 
-CarCar is a web applllication designed to track a auto dealership by tracking inventory of vehicles, sales, and services. Each application is split into its own microservice, utilizing RESTful API's to provide each o ther with information. The project utilizes docker.
+CarCar is a web appllication designed to track a auto dealership by tracking inventory of vehicles, sales, and services. Each application is split into its own microservice, utilizing RESTful API's to provide each o ther with information. The project utilizes docker.
+
 ### CarCar Features:
 * Create Auto Manufacturers & List Manufacturers
 * Create Vehicle Models & List Models
@@ -57,6 +58,42 @@ A customer, salesperson and a vehicle are required to create a sale.
 1. Begin by creating a technician from the service dropdown.
 2.
 3.
+
+## Inventory insomnia URL, Port, JSON requirements
+### Manufacturer:
+* Create/POST Manufacturer - http://localhost:8100/api/manufacturers/
+* JSON:
+```
+{
+  "name": "a Name"
+}
+```
+* List/GET Manufacturers - http://localhost:8100/api/manufacturers/
+
+### Models:
+* Create/POST Model - 	http://localhost:8100/api/models/
+* JSON:
+```
+{
+  "name": "vehicle name",
+  "picture_url": "a picture url",
+  "manufacturer_id": "5"
+}
+```
+* List/GET Models - http://localhost:8100/api/models/
+
+### Automobiles
+* Create/POST Automobile - http://localhost:8100/api/automobiles/
+* JSON:
+```
+{
+  "color": "Red",
+  "year": 2023,
+  "vin": "204",
+  "model_id": 4
+}
+```
+* List/GET Automobiles - http://localhost:8100/api/automobiles/
 
 ## Sales microservice
 ### Models for the Sales microservice:
