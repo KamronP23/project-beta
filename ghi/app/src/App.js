@@ -114,7 +114,7 @@ useEffect (() => {
           <Route path="customer/" element={<CustomerForm customer={customer} getCustomer={getCustomer} />} />
           <Route path="sales/" element={<SalesList sales={sales} getSales={getSales} />} />
           <Route path="sales/">
-          <Route path="new" element={<SalesForm getSales={getSales}/>} />
+          <Route path="new" element={<SalesForm getSales={getSales} getAutomobiles={getAutomobiles} getCustomer={getCustomer} getSalesperson={getSalesperson}/>} />
           </Route>
 
         </Routes>

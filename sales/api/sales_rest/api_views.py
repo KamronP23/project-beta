@@ -127,10 +127,10 @@ def api_list_sales(request):
         try:
 
             autos = AutomobileVO.objects.get(import_href=content["automobile"])
-            if autos.sold == False: #added this
-                autos.sold = True #added this
-                autos.save() #added this
-                content["automobile"] = autos #indented
+            if autos.sold == False: 
+                autos.sold = True
+                autos.save()
+                content["automobile"] = autos
 
                 customer = PotentialCustomer.objects.get(name=content["customer"])
                 content["customer"] = customer

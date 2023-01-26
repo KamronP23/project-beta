@@ -13,8 +13,8 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
             </li>
-            <div className="dropdown">
-              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="/automobiles" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <div className="nav-item dropdown">
+              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 Inventory
               </NavLink>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -26,8 +26,8 @@ function Nav() {
                 <li><NavLink className="dropdown-item" to="/automobiles/new">Create a new automobile</NavLink></li>
               </ul>
             </div>
-            <div className="dropdown">
-              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="/sales" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <div className="nav-item dropdown">
+              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 Sales
               </NavLink>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -38,8 +38,8 @@ function Nav() {
                 <li><NavLink className="dropdown-item" to="/sales/new">Sell form</NavLink></li>
               </ul>
             </div>
-            <div className="dropdown">
-              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="/services" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <div className="nav-item dropdown">
+              <NavLink className="btn btn-secondary dropdown-toggle bg-success" to="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 Services
               </NavLink>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">

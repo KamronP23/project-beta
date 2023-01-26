@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react';
 
-function SalesForm({getSales}) {
+function SalesForm({getSales, getAutomobiles, getCustomer, getSalesperson}) {
 
     const [automobiles, setAutomobiles] = useState([]);
     const [salespersons, setSalespersons] = useState([]);
@@ -71,6 +71,9 @@ function SalesForm({getSales}) {
             setCustomer('');
             setSalePrice('');
             getSales('');
+            getAutomobiles('');
+            getCustomer('');
+            getSalesperson('');
          }
       }
 

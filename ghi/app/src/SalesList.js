@@ -13,6 +13,7 @@ function SalesList ({sales, getSales}){
           <tr>
             <th>Vin</th>
             <th>Salesperson</th>
+            <th>Employee number</th>
             <th>Customer</th>
             <th>Price</th>
 
@@ -24,6 +25,7 @@ function SalesList ({sales, getSales}){
               <tr key={sale.id}>
                 <td>{ sale.automobile.vin }</td>
                 <td>{ sale.salesperson.name }</td>
+                <td>{ sale.salesperson.employee_number }</td>
                 <td>{ sale.customer.name }</td>
                 <td>${ sale.sale_price.toLocaleString() }</td>
 
