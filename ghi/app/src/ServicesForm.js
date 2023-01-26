@@ -122,12 +122,12 @@ function ServicesForm({getServices}) {
                 </select>
               </div>
               <div className="form-floating mb-3">
-                <input onChange={handleCustomer_nameChange} placeholder="Customer name" required type="text" name="customer_name" id="customer_name" className="form-control" value={customer_name} />
+                <input onChange={handleCustomer_nameChange} placeholder="customer_name" required type="text" name="customer_name" id="customer_name" className="form-control" value={customer_name} />
                 <label htmlFor="customer_name">Customer name</label>
               </div>
               <div className="form-floating mb-3">
-                <input onChange={handleDate_timeChange} placeholder="Date Time" required type="datetime" name="date_time" id="date_time" className="form-control" value={date_time} />
-                <label htmlFor="date">Date</label>
+                <input onChange={handleDate_timeChange} placeholder="datetime" required type="datetime-local" name="date_time" id="date_time" className="form-control" value={date_time} />
+                <label htmlFor="datetime-local">Date and Time</label>
               </div>
               <div className="form-floating mb-3">
                 <input onChange={handleReasonChange} placeholder="Reason" required type="text" name="reason" id="reason" className="form-control" value={reason} />
