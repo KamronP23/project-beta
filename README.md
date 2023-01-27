@@ -65,7 +65,7 @@ A customer, salesperson and a vehicle are required to create a sale.
 * JSON:
 ```
 {
-  "name": "a Name"
+  "name": "Toyota"
 }
 ```
 * List/GET Manufacturers - http://localhost:8100/api/manufacturers/
@@ -75,8 +75,8 @@ A customer, salesperson and a vehicle are required to create a sale.
 * JSON:
 ```
 {
-  "name": "vehicle name",
-  "picture_url": "a picture url",
+  "name": "DB11",
+  "picture_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnfgbiKa5Ym9edZv5vAVZqEUWn5knEy9qqdA&usqp=CAU",
   "manufacturer_id": "5"
 }
 ```
@@ -129,7 +129,7 @@ The Sales microservice will poll data from the automobiles inventory to an Autom
 			"city": "A city",
 			"zip_code": "Zip Code",
 			"state": "State",
-			"phone": "##########"
+			"phone": "5551551555"
 	}
 ```
 ### Sale
@@ -137,8 +137,8 @@ The Sales microservice will poll data from the automobiles inventory to an Autom
 * JSON:
 ```
 {
-  "sale_price": "18000", #price
-  "automobile": "/api/automobiles/233CC5DB11/", #automobile href
+  "sale_price": "18000",
+  "automobile": "/api/automobiles/233CC5DB11/", 
 	"customer": "A Name",
 	"salesperson": "A Name"
 }

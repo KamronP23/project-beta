@@ -23,7 +23,6 @@ function SalespersonForm({getSalesperson}) {
 
          const hatResponse = await fetch(hatUrl, fetchOptions);
          if (hatResponse.ok) {
-            console.log(hatResponse);
             setName('');
             setEmployeeNumber('');
             getSalesperson('');

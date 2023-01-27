@@ -29,7 +29,6 @@ function AutomobileForm({getAutomobiles}) {
         data.year = year;
         data.model_id = model;
         data.vin = vin;
-        console.log(data)
 
 
         const automobileUrl = 'http://localhost:8100/api/automobiles/'

@@ -51,7 +51,6 @@ function SalesForm({getSales, getAutomobiles, getCustomer, getSalesperson}) {
         data.salesperson = salesperson;
         data.customer = customer;
         data.sale_price = salePrice;
-        console.log(data)
 
 
         const salesUrl = 'http://localhost:8090/api/sales/'

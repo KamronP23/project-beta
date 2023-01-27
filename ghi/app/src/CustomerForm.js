@@ -32,7 +32,6 @@ function CustomerForm({getSalesperson}) {
 
          const hatResponse = await fetch(hatUrl, fetchOptions);
          if (hatResponse.ok) {
-            console.log(hatResponse);
             setName('');
             setStreet('');
             setCity('');
@@ -111,7 +110,7 @@ function CustomerForm({getSalesperson}) {
                     </div>
                     <div className="col">
                       <div className="form-floating mb-3">
-                        <input onChange={handlePhoneChange} required placeholder="Phone" type="text" id="phone" name="phone" className="form-control" value={phone} />
+                        <input onChange={handlePhoneChange} required placeholder="Phone" maxLength="11" type="text" id="phone" name="phone" className="form-control" value={phone} />
                         <label htmlFor="phone">Phone</label>
                       </div>
                     </div>
