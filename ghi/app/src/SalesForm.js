@@ -70,9 +70,10 @@ function SalesForm({getSales, getAutomobiles, getCustomer, getSalesperson}) {
             setCustomer('');
             setSalePrice('');
             getSales('');
-            getAutomobiles('');
-            getCustomer('');
-            getSalesperson('');
+            getAutomobiles();
+            getCustomer();
+            getSalesperson();
+            fetchAutomobileData();
          }
       }
 
