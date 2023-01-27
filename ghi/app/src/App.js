@@ -14,6 +14,10 @@ import CustomerForm from './CustomerForm';
 import SalesForm from './SalesForm';
 import SalesList from './SalesList';
 import Salesperson from './Salesperson';
+import ServicesForm from './ServicesForm'
+import ServicesList from './ServicesList'
+import ServiceHistoryList from './ServiceHistoryList'
+import TechniciansForm from './TechnicianForm'
 
 
 function App(props) {
@@ -23,6 +27,9 @@ function App(props) {
   const [salespersons, setSalespersons] = useState([]);
   const [customer, setCustomer] = useState([]);
   const [sales, setSales] = useState([]);
+  const [services, setServices] = useState([]);
+  const [technicians, setTechnicians] =useState([])
+
 
   const getAutomobiles = async () => {
     const url = 'http://localhost:8100/api/automobiles/'
@@ -81,6 +88,23 @@ function App(props) {
     }
   }
 
+  const getServices = async () => {
+    const response = await fetch('http://localhost:8080/api/services/');
+    if (response.ok) {
+      const data = await response.json();
+      const services = data.services
+      setServices(services)
+    }}
+
+  const getTechnicians = async () => {
+    const response = await fetch('http://localhost:8080/api/technicians/');
+    if (response.ok) {
+      const data = await response.json();
+      const technicians = data.technicians
+      setTechnicians(technicians)
+    }}
+
+
 useEffect (() => {
   getModels();
   getManufacturers();
@@ -88,6 +112,9 @@ useEffect (() => {
   getSalesperson();
   getCustomer();
   getSales();
+  getServices();
+  getTechnicians();
+
 }, [])
 
 
@@ -116,7 +143,14 @@ useEffect (() => {
           <Route path="sales/">
           <Route path="new" element={<SalesForm getSales={getSales} getAutomobiles={getAutomobiles} getCustomer={getCustomer} getSalesperson={getSalesperson}/>} />
           </Route>
-
+          <Route path="services/" element={<ServicesList services={services} getServices={getServices}/>} />
+          <Route path="services/">
+          <Route path="new" element={<ServicesForm getServices={getServices}/>} />
+          <Route path="history" element={<ServiceHistoryList services={services} getServices={getServices}/>} />
+          </Route>
+          <Route path="technicians/">
+          <Route path="new" element={<TechniciansForm technicians={technicians} getTechnicians={getTechnicians}/>} />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>
