@@ -104,7 +104,6 @@ function App(props) {
       setTechnicians(technicians)
     }}
 
-
 useEffect (() => {
   getModels();
   getManufacturers();

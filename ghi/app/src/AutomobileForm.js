@@ -30,7 +30,6 @@ function AutomobileForm({getAutomobiles}) {
         data.model_id = model;
         data.vin = vin;
 
-
         const automobileUrl = 'http://localhost:8100/api/automobiles/'
         const fetchOptions = {
             method: 'post',

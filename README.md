@@ -23,7 +23,7 @@ CarCar is a web appllication designed to track a auto dealership by tracking inv
 * Search for service history by VIN
 
 ### Context Map:
-![Alt text](README_image/image%20(1).png)
+![Alt text](README_image/image.png)
 
 ## Installation
 1. Fork Repository from https://gitlab.com/ToddCompton/project-beta
@@ -55,9 +55,12 @@ A customer, salesperson and a vehicle are required to create a sale.
 5. get salesperson recrods from the sales dropdown.
 
 ### To schedule a service
-1. Begin by creating a technician from the service dropdown.
-2.
-3.
+1. Begin by creating a technician from the Service - Add a Technician dropdown.
+2. Create a service appointment from the Service - Add a Service Appointment dropdown.
+3. To cancel or complete an active service appointment, select Service - Show a List of Appointments - Cancel / Complete
+4. To see a list of all active and past service appointments for a specific VIN, selecte Service - Show Service Appointments by VIN and enter VIN in the prompt
+
+
 
 ## Inventory insomnia URL, Port, JSON requirements
 ### Manufacturer:
@@ -145,7 +148,50 @@ The Sales microservice will poll data from the automobiles inventory to an Autom
 ```
 * List/GET Sales - http://localhost:8090/api/sales/
 
+### Polling for Sales
+
+* List/GET Automobile Value Objects - http://localhost:8090/api/automobiles/
+
 ## Service microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+### Models for the Service microservice:
+* AutosVO
+* Technician
+* Service
+
+The Service model uses the Technician model as a foreign key.
+
+### integration with inventory microservice:
+The Service microservice uses poller.py to poll data from Inventory regarding automobile VINs to an AutosVO model (value object). The AutosVO model has an added VIP BooleanField which defaults to True for vehicles scheduling service appointments from inventory. When a service appointment is created, the view api_list_services checks whether the VIN came from inventory and appropriately sets the VIP status. The Service model contains a completed BooleanField used to filter completed service from the list of active service appointments.
+
+## Service Appointment http RESTful APIs - insomnia URL, Port, JSON requirements
+### Technician:
+* Create/POST Technician - http://localhost:8080/api/technicians/
+* JSON:
+```
+{
+  "technician_name": "Post Malone",
+  "employee_number": "12"
+}
+```
+* List/GET Technicians - http://localhost:8080/api/technicians/
+
+### Service Appointments
+* Create/POST Service Appointment - http://localhost:8080/api/services/
+* JSON:
+```
+	{
+        "customer_name": "Vin Diesel",
+        "date_time": "2026-02-14T12:12",
+        "reason": "More torque",
+        "completed": false,
+        "technician": "Gear Head",
+        "vin": "999",
+        "vip": false
+	}
+```
+* List/Get Service Appointments - http://localhost:8080/api/services/
+
+### Polling for Service Appointments
+
+* List/GET Automobile Value Objects - http://localhost:8080/api/autosVOs/

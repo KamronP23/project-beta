@@ -32,9 +32,6 @@ function ManufacturersForm({getManufacturers}) {
     }
     }
 
-    // useEffect(() => {
-    //     getManufacturers();
-    // }, [])
     return (
         <div className="row">
         <div className="offset-3 col-6">

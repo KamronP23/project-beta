@@ -63,8 +63,6 @@ function ModelForm({getModels}) {
         setPictureUrl(value);
     }
 
-
-
     return (
         <div className="my-5 container">
         <div className="row">
