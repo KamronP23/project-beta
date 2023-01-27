@@ -27,9 +27,10 @@ class ServiceDetailEncoder(ModelEncoder):
         "technician",
         "id",
         "vin",
+        "vip",
     ]
     encoders = {
-        "vin": AutosVODetailEncoder(),
+        # "vin": AutosVODetailEncoder(),
         "technician": TechnicianListEncoder(),
     }
 
@@ -45,18 +46,22 @@ def api_list_services(request):
         content = json.loads(request.body)
   
         try:
-            vin = AutosVO.objects.get(vin=content["vin"])
-            content["vin"] = vin
-            Service.objects.vip = True
+            # vin = AutosVO.objects.get(vin=content["vin"])
+            # content["vin"] = vin
+            # Service.objects.vip = True
 
             technician = Technician.objects.get(technician_name=content["technician"])
             content["technician"] = technician
 
-        except AutosVO.DoesNotExist:
+        except Technician.DoesNotExist:
             return JsonResponse(
-                {"message": "Invalid automobile vin"},
+                {"message": "Invalid technician"},
                 status=400,
             )
+        if AutosVO.objects.filter(vin=content["vin"]).exists():
+            content["vip"] = True
+        else:
+            content["vip"] = False
 
         service = Service.objects.create(**content)
         return JsonResponse(

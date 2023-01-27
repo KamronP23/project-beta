@@ -144,8 +144,12 @@ function ServicesForm({getServices}) {
                 <input onChange={handleReasonChange} placeholder="Reason" required type="text" name="reason" id="reason" className="form-control" value={reason} />
                 <label htmlFor="reason">Reason</label>
               </div>
-              <div className="mb-3">
-                <select onChange={handleVinChange} required  name="vin" id="vin" className="form-select" value={vin}>
+              <div className="form-floating mb-3">
+                <input onChange={handleVinChange} placeholder="Reason" required maxLength="17" type="text" name="vin" id="vin" className="form-control" value={vin} />
+                <label htmlFor="vin">VIN</label>
+              </div>
+              {/* <div className="mb-3">
+                {/* <select onChange={handleVinChange} required  name="vin" id="vin" className="form-select" value={vin}>
                   <option>VIN</option>
                   {vins.map(auto => {
                     return (
@@ -153,9 +157,9 @@ function ServicesForm({getServices}) {
                             {auto.vin}
                         </option>
                     );
-                  })}
-                </select>
-              </div>
+                  })} */}
+                {/* </select> */}
+              {/* </div> */} 
               <button className="btn btn-primary">Create appointment</button>
             </form>
           </div>

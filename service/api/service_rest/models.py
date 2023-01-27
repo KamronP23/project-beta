@@ -7,6 +7,7 @@ class AutosVO(models.Model):
     vip = models.BooleanField(default=True)
 
 
+
 class Technician(models.Model):
     technician_name = models.CharField(max_length=100)
     employee_number = models.PositiveSmallIntegerField()
@@ -20,17 +21,19 @@ class Service(models.Model):
     reason = models.CharField(max_length=200)
     completed = models.BooleanField(null=False)
     vip = models.BooleanField(default=False)
+    vin = models.CharField(max_length=17, unique=True)
+    
     technician = models.ForeignKey(
     Technician,
     related_name="services",
     on_delete=models.CASCADE
     )
 
-    vin = models.ForeignKey(
-    AutosVO,
-    related_name="services",
-    on_delete=models.CASCADE
-    )
+    # vin = models.ForeignKey(
+    # AutosVO,
+    # related_name="services",
+    # on_delete=models.CASCADE
+    # )
 
     def get_api_url(self):
         return reverse("api_service", kwargs={"vin": self.id})

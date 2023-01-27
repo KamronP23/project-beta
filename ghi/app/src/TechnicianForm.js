@@ -51,7 +51,7 @@ function TechnicianForm({getTechnicians}) {
                 <label htmlFor="technician">Technician name</label>
               </div>
               <div className="form-floating mb-3">
-                <input onChange={handleEmployee_numberChange} placeholder="Employee number" required type="number" name="employee_number" id="employee_number" className="form-control" value={employee_number} />
+                <input onChange={handleEmployee_numberChange} placeholder="Employee number" required max="9999" type="number" name="employee_number" id="employee_number" className="form-control" value={employee_number} />
                 <label htmlFor="technician">Employee number</label>
               </div>
               <button className="btn btn-primary">Create</button>

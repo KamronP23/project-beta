@@ -29,6 +29,7 @@ function ServiceHistoryList({ services, getServices }){
                   <label htmlFor="VinFilt">Please enter a VIN to see service records</label>
                 </div>
               </div>
+              <button className="btn btn-primary">Search for service records</button>
       </form>
       <table className="table table-striped align-middle mt-5">
         <thead>
@@ -42,10 +43,10 @@ function ServiceHistoryList({ services, getServices }){
           </tr>
         </thead>
         <tbody>
-          {services.filter(service => service.vin.vin === VinFilt).map((service) => {
+          {services.filter(service => service.vin === VinFilt).map((service) => {
             return (
               <tr key={service.id}>
-                <td>{ service.vin.vin }</td>
+                <td>{ service.vin }</td>
                 <td>{ service.customer_name }</td>
                 <td>{ service.date_time }</td>
                 <td>{ service.technician.technician_name }</td>

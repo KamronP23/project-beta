@@ -31,10 +31,10 @@ function Nav() {
                 Services
               </NavLink>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><NavLink className="dropdown-item" to="/services">List all active service appointments</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/services/new">Enter a new service appointment</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/technicians/new">Create a technician employee</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/services/history">List all service records by VIN</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/services">Show a List of Appointments</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/services/new">Add a Service Appointment</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/technicians/new">Add a Technician</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/services/history">Show Service Appointments by VIN</NavLink></li>
               </ul>
             </div>
           </ul>
