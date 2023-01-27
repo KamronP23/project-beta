@@ -23,7 +23,7 @@ CarCar is a web appllication designed to track a auto dealership by tracking inv
 * Search for service history by VIN
 
 ### Context Map:
-![Alt text](README_image/image.png)
+![Alt text](README_image/image%20(1).png)
 
 ## Installation
 1. Fork Repository from https://gitlab.com/ToddCompton/project-beta
@@ -138,7 +138,7 @@ The Sales microservice will poll data from the automobiles inventory to an Autom
 ```
 {
   "sale_price": "18000",
-  "automobile": "/api/automobiles/233CC5DB11/", 
+  "automobile": "/api/automobiles/233CC5DB11/",
 	"customer": "A Name",
 	"salesperson": "A Name"
 }

@@ -9,6 +9,4 @@ urlpatterns = [
     path("sales/<int:pk>/", api_sales_details, name="api_sales_details"),
     path("salespersons/<int:pk>", api_show_salesperson, name="api_show_salesperson"),
 
-
-
 ]
