@@ -99,7 +99,7 @@ useEffect (() => {
           <Route path="history" element={<ServiceHistoryList services={services} getServices={getServices}/>} />
           </Route>
           <Route path="technicians/">
-          <Route path="new" element={<TechniciansForm getTechnicians={getTechnicians}/>} /> 
+          <Route path="new" element={<TechniciansForm technicians={technicians} getTechnicians={getTechnicians}/>} /> 
           </Route>
         </Routes>
       </div>

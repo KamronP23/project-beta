@@ -44,7 +44,7 @@ function ServicesList({ services, getServices }){
           {services.filter(service => service.completed === false).map((service) => {
             return (
               <tr key={service.id}>
-                <td>{ service.vin.vin }</td>
+                <td>{ service.vin }</td>
                 <td>{ service.customer_name }</td>
                 <td>{ service.date_time }</td>
                 <td>{ service.technician.technician_name }</td>

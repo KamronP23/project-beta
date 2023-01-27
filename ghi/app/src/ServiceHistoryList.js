@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function ServiceHistoryList({ services, getServices }){
 
@@ -7,10 +7,9 @@ function ServiceHistoryList({ services, getServices }){
   const handleVinFiltChange = (event) => {
     const value = event.target.value;
     setVinFilt(value);
-    getServices();
     }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     getServices();        
     
@@ -19,7 +18,7 @@ function ServiceHistoryList({ services, getServices }){
     return null
   }
 
-  return (
+    return (
     <>
       <div><br></br></div>
       <form onSubmit={handleSubmit} id="create-serviceappt-form">
@@ -28,9 +27,9 @@ function ServiceHistoryList({ services, getServices }){
                   <input onChange={handleVinFiltChange} placeholder="VinFilt" required type="text" name="VinFilt" id="VinFilt" className="form-control" value={VinFilt} />
                   <label htmlFor="VinFilt">Please enter a VIN to see service records</label>
                 </div>
-              </div>
-              <button className="btn btn-primary">Search for service records</button>
-      </form>
+                <button className="btn btn-primary">Submit (...unnecessary button, this is React!)</button>
+              </div>           
+      
       <table className="table table-striped align-middle mt-5">
         <thead>
           <tr>
@@ -56,7 +55,8 @@ function ServiceHistoryList({ services, getServices }){
             );
           })}
         </tbody>
-      </table>      
+      </table>  
+      </form>     
     </>
     );
 }

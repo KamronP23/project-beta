@@ -29,12 +29,6 @@ class Service(models.Model):
     on_delete=models.CASCADE
     )
 
-    # vin = models.ForeignKey(
-    # AutosVO,
-    # related_name="services",
-    # on_delete=models.CASCADE
-    # )
-
     def get_api_url(self):
         return reverse("api_service", kwargs={"vin": self.id})
 

@@ -30,7 +30,6 @@ class ServiceDetailEncoder(ModelEncoder):
         "vip",
     ]
     encoders = {
-        # "vin": AutosVODetailEncoder(),
         "technician": TechnicianListEncoder(),
     }
 
@@ -46,10 +45,6 @@ def api_list_services(request):
         content = json.loads(request.body)
   
         try:
-            # vin = AutosVO.objects.get(vin=content["vin"])
-            # content["vin"] = vin
-            # Service.objects.vip = True
-
             technician = Technician.objects.get(technician_name=content["technician"])
             content["technician"] = technician
 

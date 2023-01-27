@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import Creatable, { useCreatable } from 'react-select/creatable';
 
 function ServicesForm({getServices}) {
 
@@ -51,9 +50,6 @@ function ServicesForm({getServices}) {
         data.completed = completed;
         data.vin = vin;
         data.vip = vip;
-
-        console.log(data)
-      
       
         const servicesUrl = 'http://localhost:8080/api/services/';
         const fetchConfig = {
@@ -148,18 +144,6 @@ function ServicesForm({getServices}) {
                 <input onChange={handleVinChange} placeholder="Reason" required maxLength="17" type="text" name="vin" id="vin" className="form-control" value={vin} />
                 <label htmlFor="vin">VIN</label>
               </div>
-              {/* <div className="mb-3">
-                {/* <select onChange={handleVinChange} required  name="vin" id="vin" className="form-select" value={vin}>
-                  <option>VIN</option>
-                  {vins.map(auto => {
-                    return (
-                        <option key={auto.import_href} value={auto.vin}>
-                            {auto.vin}
-                        </option>
-                    );
-                  })} */}
-                {/* </select> */}
-              {/* </div> */} 
               <button className="btn btn-primary">Create appointment</button>
             </form>
           </div>
