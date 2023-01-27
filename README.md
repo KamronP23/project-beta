@@ -150,7 +150,7 @@ The Sales microservice will poll data from the automobiles inventory to an Autom
 
 ### Polling for Sales
 
-* List/GET Automobile Value Objects - http://localhost:8090/api/automobileVOs/
+* List/GET Automobile Value Objects - http://localhost:8090/api/automobiles/
 
 ## Service microservice
 
