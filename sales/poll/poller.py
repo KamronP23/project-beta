@@ -19,7 +19,8 @@ def get_automobiles():
         AutomobileVO.objects.update_or_create(
             import_href=automobile["href"],
             defaults={
-                "vin": automobile["vin"]
+                "vin": automobile["vin"],
+                "picture_url": automobile["picture_url"]
             }
         )
 

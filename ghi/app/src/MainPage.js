@@ -1,13 +1,16 @@
+import carlogo from "./imgs/carlogo.png";
+
 function MainPage() {
   return (
     <div className="px-4 py-5 my-5 text-center">
-      <h1 className="display-5 fw-bold">CarCar</h1>
-      <div className="col-lg-6 mx-auto">
-        <p className="lead mb-4">
-          The premiere solution for automobile dealership
-          management!
-        </p>
-      </div>
+      <div className="px-4 py-5 my-5 text-center">
+        <img
+          src={carlogo}
+          className="mx-auto d-block"
+          alt=""
+          style={{ objectFit: "contain", width: "60%", height: "60%" }}
+        />
+    </div>
     </div>
   );
 }

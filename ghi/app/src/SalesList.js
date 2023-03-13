@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 function SalesList ({sales, getSales}){
-
     if (sales === undefined) {
         return null
     }
@@ -28,7 +27,6 @@ function SalesList ({sales, getSales}){
                 <td>{ sale.salesperson.employee_number }</td>
                 <td>{ sale.customer.name }</td>
                 <td>${ sale.sale_price.toLocaleString() }</td>
-
               </tr>
             );
           })}
